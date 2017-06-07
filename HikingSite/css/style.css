@@ -43,7 +43,8 @@ header {
 
 /* on mobile they size of the image and modal-content must be made smaller */
 .modal-content {
-    width: 300px;
+    /*width: 300px;*/
+    width: 100%;
     margin: 0 auto;
 }
 .lightbox-image {

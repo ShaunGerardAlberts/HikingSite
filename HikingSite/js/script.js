@@ -115,8 +115,8 @@ function createBlogList(items) {
 
       //console.log(items[i])
       html += '<div class="col-md-6" data-id="' + id + '">';
-      html += '<p>' + id + '</p>';
-      html += '<div class="col-md-3"><img src="' + thumbnail + '" alt="" class="img-responsive"></div>';
+      html += '<h1 id="id">' + id + '</h1>';
+      html += '<div class="col-md-3"><img src="' + thumbnail + '" alt="" id="' + content + '" class="img-responsive"></div>';//YES YES YES!!!!!!!!!!!!!!!
       html += '<div class="col-md-9">';
       html += '<p>Date: ' + date + '</p>';
       html += '<p>Title: ' + title + '</p>';
@@ -131,18 +131,20 @@ function createBlogList(items) {
     }
   }
 
-    /* show lightbox when clicking image | copied from https://codepen.io/webcane/pen/bNEOXZ
+    //show lightbox when clicking image | copied from https://codepen.io/webcane/pen/bNEOXZ
     $('img.img-responsive').click(function(event) {
     	event.preventDefault();
     	var content = $('.modal-body');
+      //get the content associated with the image that was clicked
+      var contentClicked = $(this).attr('id');//This feels like a hack of note but it works
     	content.empty();
       //var title = $(this).attr("title");
       var title = $('.getTitle');
-      $('.modal-title').html(title);
+      $('.modal-title').html(contentClicked);
       content.html($(this).html());
       $(".modal-profile").modal({show:true});
     });
-
+/*
     $('img.img-responsive').click(function(event) {
       var t = $('.getTitle');
       alert(t);
