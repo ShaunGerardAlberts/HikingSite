@@ -4,23 +4,35 @@
 /* Check your browsers console for messages */
 /* Use console.log() as many times as you need to */
 
+/*****************************  For the contact form submission ****************************************************************/
 $.ajax({
   method: "POST",
-  dataType: "HTML",
+  dataType: "JSON",
   //url: "inc/call-me.php",
   url: "http://dj3dw.com/des223-2017-assessment03/inc/call-me.php",
   data: {
     type: "contact"
   }
 }).done(function (jsonObject) {
-  deipherContactResponseJSON(jsonObject)
-  //console.log("What is going on : " + r);
-  alert("Recieved from server/php" + jsonObject);
+  validateEmailSubmission(jsonObject)
 })
 
-function deipherContactResponseJSON(jsonObject) {
-  console.log('I am the deipherContactResponseJSON method and this is what I have : ' + jsonObject);
+function validateEmailSubmission(jsonObject) {
+  // The JSON object constain 3 keys, with more keys within the messages parameter, this returns an array of messages
+  var jsonMessages = jsonObject.messages;
+
+  // position 5 of messages constains the mail status messages and a success key within there
+  // this result will either be true or false
+  var resultStatus = jsonMessages[5].mail_message.success;
+
+  // infrom user as to the result of the form submission
+  if (resultStatus === "true") {
+    console.log("Success: Email Sent")
+  } else {
+    console.log("Email was not sent - something went wrong")
+  }
 }
+/*********************************************************************************************/
 
 /* Set global variables */
 var blogCount = 0;
