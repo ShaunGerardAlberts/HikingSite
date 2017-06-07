@@ -5,21 +5,31 @@
 /* Use console.log() as many times as you need to */
 
 /*****************************  For the contact form submission ****************************************************************/
-$.ajax({
-  method: "POST",
-  dataType: "JSON",
-  //url: "inc/call-me.php",
-  url: "http://dj3dw.com/des223-2017-assessment03/inc/call-me.php",
-  data: {
-    type: "contact"
+$('#contact-submission').on('click', function () {
+  event.preventDefault();
+  var userEmail = $('#exampleInputEmail').val();
+  if (userEmail != '') {
+    $.ajax({
+      method: "POST",
+      dataType: "JSON",
+      //url: "inc/call-me.php",
+      url: "http://dj3dw.com/des223-2017-assessment03/inc/call-me.php",
+      data: {
+        type: "contact",
+        mail_to: "sga006@student.usc.edu.au",
+      }
+    }).done(function (jsonObject) {
+      validateEmailSubmission(jsonObject)
+    })
+  } else {
+    console.log('email must be entered');
   }
-}).done(function (jsonObject) {
-  validateEmailSubmission(jsonObject)
-})
+});
 
-function validateEmailSubmission(jsonObject) {
+/*function validateEmailSubmission(jsonObject) {
   // The JSON object constain 3 keys, with more keys within the messages parameter, this returns an array of messages
   var jsonMessages = jsonObject.messages;
+
 
   // position 5 of messages constains the mail status messages and a success key within there
   // this result will either be true or false
@@ -27,9 +37,19 @@ function validateEmailSubmission(jsonObject) {
 
   // infrom user as to the result of the form submission
   if (resultStatus === "true") {
-    console.log("Success: Email Sent")
+    console.log("Success: Email Sent");
+    alert("Success: Email Sent")
   } else {
-    console.log("Email was not sent - something went wrong")
+    console.log("Email was not sent - something went wrong");
+    alert("Email was not sent - something went wrong")
+  }
+}*/
+
+function validateEmailSubmission(jsonObject) {
+  if (jsonObject.success) {
+    alert("Submission Successful")
+  } else {
+    alert("Submission Unsuccessful")
   }
 }
 /*********************************************************************************************/
