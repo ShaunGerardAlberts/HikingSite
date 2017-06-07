@@ -42,9 +42,12 @@ switch ( $callType ) {
     $mail = sendMail( $mailTo, $mailSubject, $sendMessage );
     if ( $mail[ 'success' ] ) {
       $response[ 'success' ] = true;
+      //$response[ 'success' ] = '<p>success</p>';
       $messages[] = 'Mail sent!';
+      //$response['content'] = "success";// i added
     } else {
       $messages[] = array( 'mail_message' => $mail );
+      //$response['content'] = "fail";//i added
     }
     break;
   case "blog":

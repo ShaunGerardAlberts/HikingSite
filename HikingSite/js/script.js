@@ -4,6 +4,23 @@
 /* Check your browsers console for messages */
 /* Use console.log() as many times as you need to */
 
+$.ajax({
+  method: "POST",
+  dataType: "HTML",
+  //url: "inc/call-me.php",
+  url: "http://dj3dw.com/des223-2017-assessment03/inc/call-me.php",
+  data: {
+    type: "contact"
+  }
+}).done(function (jsonObject) {
+  deipherContactResponseJSON(jsonObject)
+  //console.log("What is going on : " + r);
+  alert("Recieved from server/php" + jsonObject);
+})
+
+function deipherContactResponseJSON(jsonObject) {
+  console.log('I am the deipherContactResponseJSON method and this is what I have : ' + jsonObject);
+}
 
 /* Set global variables */
 var blogCount = 0;
