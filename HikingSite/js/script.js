@@ -125,7 +125,9 @@ function createBlogList(items) {
       //html += '<p>' + content + '</p>';
       html += '</div>';
       html += '</div>';
-
+      console.log('--------------------------');
+      console.log(html);
+      console.log('--------------------------');
 
       $blogWrap.append(html);
     }

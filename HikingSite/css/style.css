@@ -25,7 +25,7 @@ header {
   color: #fff;
 }
 .banner-section {
-  background-image: url("../images/slider1.jpg");
+/*  background-image: url("../images/slider1.jpg");*/
   background-position: center center;
   background-size: cover;
   height: 700px;
@@ -63,6 +63,28 @@ header {
   height: 100px;
   background-color: brown;
 }
+/***********************************************************************/
+.masonry_wrapper{
+    /*width: 500px;*/
+    margin: 0 auto;
+}
+.box{
+    margin: 10px;
+    border: 3px solid #ccc;
+}
+/** scale transition Strats **/
+.column_split{
+    -moz-column-count:1;
+    -moz-column-gap: 0px;
+    -moz-column-width: 100%;
+    -webkit-column-count:1;
+    -webkit-column-gap: 0px;
+    -webkit-column-width: 100%;
+    column-count: 1;
+    column-gap: 10px;
+    column-width: 100%;
+}
+/***********************************************************************/
 
 /************************* Media Queries  *******************************/
 /*  media queries, bootstrap is mobile first, so global styling set for mobile. Overrite them moving outwards(wider)   */
@@ -80,6 +102,18 @@ header {
 @media(min-width: 768px) {
   .logo{
     width: 40%;
+  }
+  /** scale transition Strats **/
+  .column_split{
+      -moz-column-count:2;
+      -moz-column-gap: 10px;
+      -moz-column-width: 40%;
+      -webkit-column-count:2;
+      -webkit-column-gap: 10px;
+      -webkit-column-width: 40%;
+      column-count: 2;
+      column-gap: 10px;
+      column-width: 40%;
   }
 }
 @media(min-width: 1024px) {
