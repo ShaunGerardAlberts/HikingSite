@@ -114,8 +114,8 @@ function createBlogList(items) {
       //console.log("Shaun " + content);
 
       //console.log(items[i])
-      html += '<div class="col-md-6" data-id="' + id + '">';
-      html += '<h1 id="id">' + id + '</h1>';
+      html += '<div class="col-md-6 blog-item" data-id="' + id + '">';
+      //html += '<h1 id="id">' + id + '</h1>';
       html += '<div class="col-md-3"><img src="' + thumbnail + '" alt="" id="' + content + '" class="img-responsive"></div>';//YES YES YES!!!!!!!!!!!!!!!
       html += '<div class="col-md-9">';
       html += '<p>Date: ' + date + '</p>';

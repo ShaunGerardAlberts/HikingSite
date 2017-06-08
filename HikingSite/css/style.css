@@ -33,6 +33,41 @@ header {
   background-size: cover;
   height: 700px;
 }
+/*  for the row holding the blog data - margins from bootstrap are messing up the design */
+#blog {
+  margin-left: 0;
+  margin-right: 0;
+}
+.blog-section > h3 {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.blog-section .blog-item {
+
+}
+
+.blog-item {
+    width: 45%;
+    margin-left: 60px;
+    margin-bottom: 30px;
+}
+.changedisplay { /* bizarre that i need to do this */
+  display: block;
+  margin-top: 50px;
+  background-color: yellow;
+}
+hr {
+  color: black;
+  background-color: black;
+}
+/*********************  contact-us *********************/
+.contact-us > h3 {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-left: 40px;
+}
 
 /*  Styling for the lightbox | manulpated code from : https://codepen.io/webcane/pen/bNEOXZ */
 #profile-grid { overflow: auto; white-space: normal; }
@@ -40,9 +75,9 @@ header {
 #profile-grid .panel { padding: 0 }
 #profile-grid .panel-body { padding: 0px }
 #profile-grid .profile-name { font-weight: bold; }
-#profile-grid .thumbnail {margin-bottom:0px;}
+#profile-grid .thumbnail {margin-bottom:0px; }
 #profile-grid .panel-thumbnail { overflow: hidden; }
-#profile-grid .img-rounded { border-radius: 4px 4px 0 0;}
+#profile-grid .img-rounded { border-radius: 4px 4px 0 0; }
 
 /* on mobile they size of the image and modal-content must be made smaller */
 .modal-content {
@@ -55,9 +90,8 @@ header {
 }
 /* end of styling for lightbox*/
 
-.blog-section {
 
-}
+
 .contact-us {
 
 }
@@ -68,7 +102,7 @@ header {
 }
 /***********************************************************************/
 .bookmark-only {
-  
+
 }
 /***********************************************************************/
 
