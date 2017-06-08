@@ -15,7 +15,7 @@
 
      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-     <script src="js/script.js?ver=1"></script>
+     <!-- <script src="js/script.js?ver=1"></script>-->
 
      <link href="css/libs/jquery.bxslider.css" rel="stylesheet">
      <script src="js/plugins/jquery.bxslider.js"></script>
@@ -32,6 +32,9 @@
   </head>
   <body>
     <div id="page">
+      <!-- top of page bookmark for scroll plugin -->
+      <p id="top-bookmark"></p>
+
       <header>
         <img src="images/trails-logo-v1.png" alt="trails-logo here" class="logo">
 
@@ -50,19 +53,19 @@
             </div>
             <div class="collapse navbar-collapse col-sm-6 col-sm-offset-6 col-lg-6 col-lg-offset-8" id="collapsemenu">
               <ul class="nav navbar-nav">
-                <li><a class="dropdown-toggle"
+                <li><a class="dropdown-toggle" href="#"
                     data-toggle="dropdown" role="button"
                     aria-haspopup="true"
                     aria-expanded="false">Outdoor 101
                   </a>
                 </li>
-                <li><a class="dropdown-toggle"
+                <li><a class="dropdown-toggle" href="#blog-scroll"
                     data-toggle="dropdown" role="button"
                     aria-haspopup="true"
                     aria-expanded="false">Blogs
                   </a>
                 </li>
-                <li><a href="#" class="dropdown-toggle"
+                <li><a class="dropdown-toggle" href="#contact-scroll"
                     data-toggle="dropdown" role="button"
                     aria-haspopup="true"
                     aria-expanded="false">Contact
@@ -90,6 +93,7 @@
       </section>
 
       <section class="blog-section">
+        <p id="blog-scroll" class="bookmark-only"></p>
         <h3>Blog</h3>
         <div class="row" id="blog">
 
@@ -98,6 +102,7 @@
       </section>
 
       <section class="contact-us">
+        <p id="contact-scroll" class="bookmark-only"></p>
         <h3>Contact Form</h3>
         <div class="row">
           <p>This contact form contains a hidden input field "mail_to" so it can be sent to the server.</p>
@@ -146,16 +151,14 @@
 
       </section>
 
-      <section class="footer-section">
 
+      <section class="footer-section">
+        <p><a href="#top-bookmark">BACK TO TOP</a></p>
       </section>
 
     </div>
-<!--
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/script.js?ver=1"></script>
--->
+
+  <script src="js/script.js?ver=1"></script>
 
 
   </body>
