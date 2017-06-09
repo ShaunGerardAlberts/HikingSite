@@ -111,49 +111,42 @@ function createBlogList(items) {
       full = items[blogCount].images.full;
       excerpt = items[blogCount].excerpt;
       content = items[blogCount].content;
-      //console.log("Shaun " + content);
 
-      //console.log(items[i])
-      html += '<div class="col-md-6 blog-item" data-id="' + id + '">';
+      html += '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 blog-item" data-id="' + id + '">';
       //html += '<h1 id="id">' + id + '</h1>';
-      html += '<div class="col-md-3"><img src="' + thumbnail + '" alt="" id="' + content + '" class="img-responsive"></div>';//YES YES YES!!!!!!!!!!!!!!!
-      html += '<div class="col-md-9">';
-      html += '<p>Date: ' + date + '</p>';
-      html += '<p>Title: ' + title + '</p>';
-      html += '<p class="getTitle">Author: ' + author + '</p>';
-      html += '<p>' + excerpt + '</p>';
+      html += '<div class="col-md-4 col-lg-4"><img src="' + thumbnail + '" alt="" id="' + content + '"></div>';//YES YES YES!!!!!!!!!!!!!!!
+      html += '<div class="col-md-8 col-lg-8">';
+      html += '<p><span class="bold">Date:</span> ' + date + '</p>';
+      html += '<p id="' + title + '"><span class="bold">Title:</span> ' + title + '</p>';
+      html += '<p class="getTitle"><span class="bold">Author:</span> ' + author + '</p>';
+      html += '<p><span class="bold">Excerpt:</span> ' + excerpt + '</p>';
+      html += '<p><button type="submit" class="col-xs-5 col-xs-offset-3 col-lg-3 col-lg-offset-3 btn btn-default read-responsive" data-title="' + title + '" data-content="' + content + '">Read Blog</button><p>';
+      //<button type="submit" id="contact-submission" class="btn btn-default col-sm-2 col-sm-offset-5">Send</button>
       //html += '<p>' + content + '</p>';
       html += '</div>';
       html += '</div>';
-      //console.log('--------------------------');
-      //console.log(html);
-      //console.log('--------------------------');
 
       $blogWrap.append(html);
     }
   }
 
     //show lightbox when clicking image | copied from https://codepen.io/webcane/pen/bNEOXZ
-    $('img.img-responsive').click(function(event) {
+    $('.read-responsive').click(function(event) {
     	event.preventDefault();
     	var content = $('.modal-body');
+      //get the blog title
+      var clickedBlogTitle = $(this).attr('data-title');
       //get the content associated with the image that was clicked
-      var contentClicked = $(this).attr('id');//This feels like a hack of note but it works
+      var clickedBlogContent = $(this).attr('data-content');
     	content.empty();
-      //var title = $(this).attr("title");
-      var title = $('.getTitle');
-      $('.modal-title').html(contentClicked);
-      content.html($(this).html());
+      //now that we have the info for the specific blog, add it to the modal
+      $('.modal-title').html(clickedBlogTitle);
+      content.html(clickedBlogContent);
       $(".modal-profile").modal({show:true});
     });
-/*
-    $('img.img-responsive').click(function(event) {
-      var t = $('.getTitle');
-      alert(t);
-      console.log(t);
-    });*/
 
 /****************************************    Scroll plugin  ****************/
+// Plugin from : https://codepen.io/chriscoyier/pen/dpBMVP
 // Select all links with hashes
 $('a[href*="#"]')
   // Remove links that don't actually link to anything
