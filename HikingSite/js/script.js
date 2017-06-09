@@ -114,7 +114,7 @@ function createBlogList(items) {
 
       html += '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 blog-item" data-id="' + id + '">';
       //html += '<h1 id="id">' + id + '</h1>';
-      html += '<div class="col-md-4 col-lg-4"><img src="' + thumbnail + '" alt="" id="' + content + '"></div>';//YES YES YES!!!!!!!!!!!!!!!
+      html += '<div class="col-md-4 col-lg-4"><img src="' + thumbnail + '" class="img-blog" alt="" id="' + content + '"></div>';
       html += '<div class="col-md-8 col-lg-8">';
       html += '<p><span class="bold">Date:</span> ' + date + '</p>';
       html += '<p id="' + title + '"><span class="bold">Title:</span> ' + title + '</p>';
@@ -122,7 +122,7 @@ function createBlogList(items) {
       html += '<p><span class="bold">Excerpt:</span> ' + excerpt + '</p>';
       html += '<p><button type="submit" class="col-xs-5 col-xs-offset-3 col-lg-3 col-lg-offset-3 btn btn-default read-responsive" data-title="' + title + '" data-content="' + content + '">Read Blog</button><p>';
       //<button type="submit" id="contact-submission" class="btn btn-default col-sm-2 col-sm-offset-5">Send</button>
-      //html += '<p>' + content + '</p>';
+      //html += '<p>' + content + '</p>';\
       html += '</div>';
       html += '</div>';
 
