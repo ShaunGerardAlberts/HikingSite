@@ -8,7 +8,9 @@
 $('#contact-submission').on('click', function () {
   event.preventDefault();
   var userEmail = $('#exampleInputEmail').val();
-  if (userEmail != '') {
+  var isValidEmail = validateEmail(userEmail);
+
+  if (isValidEmail) {
     $.ajax({
       method: "POST",
       dataType: "JSON",
@@ -21,35 +23,42 @@ $('#contact-submission').on('click', function () {
     }).done(function (jsonObject) {
       validateEmailSubmission(jsonObject)
     })
-  } else {
-    console.log('email must be entered');
   }
 });
-
-/*function validateEmailSubmission(jsonObject) {
-  // The JSON object constain 3 keys, with more keys within the messages parameter, this returns an array of messages
-  var jsonMessages = jsonObject.messages;
-
-
-  // position 5 of messages constains the mail status messages and a success key within there
-  // this result will either be true or false
-  var resultStatus = jsonMessages[5].mail_message.success;
-
-  // infrom user as to the result of the form submission
-  if (resultStatus === "true") {
-    console.log("Success: Email Sent");
-    alert("Success: Email Sent")
-  } else {
-    console.log("Email was not sent - something went wrong");
-    alert("Email was not sent - something went wrong")
-  }
-}*/
 
 function validateEmailSubmission(jsonObject) {
   if (jsonObject.success) {
     alert("Submission Successful")
   } else {
     alert("Submission Unsuccessful")
+  }
+}
+
+// This will check if the email is blank, invalid or valid
+// if invalid input border set to red and add a message added below the input
+function validateEmail(email) {
+  if (email.length == 0) {
+    //$("#er").addClass(".emailResponseAdd");
+    $('#er').text('');
+    $("#er").text('** Email is blank');
+    return false;
+  } else { // not blank
+    // copied this regex from : http://www.jquerybyexample.net/2011/04/validate-email-address-using-jquery.html
+    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (filter.test(email)) {
+      console.log("Remove Class - validEmail");
+      $('#er').text('');
+      $('#er').text('**Email is required');
+      //$("#er").removeClass(".emailResponseAdd");
+      return true;
+    }
+    else {
+      // Not valid email, inform user
+      //$("#er").addClass(".emailResponseAdd");
+      $('#er').text('');
+      $("#er").text('** Invalid email entry');
+      return false;
+    }
   }
 }
 /*********************************************************************************************/
@@ -89,8 +98,8 @@ function createBlogList(items) {
     $blogWrap.html('');
   }
 
-  console.log('Blog count ' + blogCount);
-  console.log('Blog items length ' + items.length);
+  //console.log('Blog count ' + blogCount);
+  //console.log('Blog items length ' + items.length);
 
   if (blogCount < items.length) {
 
