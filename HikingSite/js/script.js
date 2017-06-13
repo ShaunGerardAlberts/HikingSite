@@ -71,12 +71,12 @@ function validateEmail(email) {
   } else { // not blank
     // copied this regex from : http://www.jquerybyexample.net/2011/04/validate-email-address-using-jquery.html
     var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-    if (filter.test(email)) {
+    // Test if the email passes the filter regex
+    if (filter.test(email)) {//pass
       $('#emailResponseTag').text('');
       $('#emailResponseTag').text('**Email is required');
-      //$("#er").removeClass(".emailResponseAdd");
       return true;
-    } else {
+    } else {// fail
         $('#emailResponseTag').text('');
         $("#emailResponseTag").text('** Invalid email entry');
         return false;
@@ -101,6 +101,7 @@ $(document).ready(function () {
       type: "blog"
     }
   }).done(function (r) {
+    // Use the response from the sever once it is received
     createBlogList(r.blog.items);
   })
 
@@ -116,17 +117,20 @@ function createBlogList(items) {
   var i = 1;
   $blogWrap = $('#blog');
   if (blogCount === 0) {
+    // Set the recieved items list into the global list for later use
     itemsGlobal = items;
+    // Set the div to ''
     $blogWrap.html('');
   }
+  //console.log('Blog count ' + blogCount);//console.log('Blog items length ' + items.length);
 
-  //console.log('Blog count ' + blogCount);
-  //console.log('Blog items length ' + items.length);
-
+  // blogCount is initialised to 0 so will go in this loop if we recieve at least 1 blog item
   if (blogCount < items.length) {
 
+    // Iterate through every blog item we have recieved from the server
     for (blogCount; blogCount < items.length; blogCount++) {
 
+      // Once we have read 4 blog items stop, we only want to deal woth 4 at a time
       if (i > limit) {
         break;
       }
@@ -134,6 +138,7 @@ function createBlogList(items) {
 
       html = ''; // HTML placeholder - build on this each time.
 
+      // Get the deatails out of the list and save them in appropriately names variables
       id = items[blogCount].id;
       title = items[blogCount].title;
       date = items[blogCount].date;
@@ -143,6 +148,7 @@ function createBlogList(items) {
       excerpt = items[blogCount].excerpt;
       content = items[blogCount].content;
 
+      // Now create the html by building on the html variable
       html += '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 blog-item" data-id="' + id + '">';
       //html += '<h1 id="id">' + id + '</h1>';
       html += '<div class="col-md-4 col-lg-4"><img src="' + thumbnail + '" class="img-blog" alt="" id="' + content + '"></div>';
@@ -151,28 +157,40 @@ function createBlogList(items) {
       html += '<p id="' + title + '"><span class="bold">Title:</span> ' + title + '</p>';
       html += '<p class="getTitle"><span class="bold">Author:</span> ' + author + '</p>';
       html += '<p><span class="bold">Excerpt:</span> ' + excerpt + '</p>';
-      html += '<p><button type="submit" class="col-xs-5 col-xs-offset-3 col-lg-3 col-lg-offset-3 btn btn-default read-responsive" data-title="' + title + '" data-content="' + content + '">Read Blog</button><p>';
-      //<button type="submit" id="contact-submission" class="btn btn-default col-sm-2 col-sm-offset-5">Send</button>
-      //html += '<p>' + content + '</p>';\
+      html += '<p><button type="submit" class="col-xs-5 col-xs-offset-3 col-lg-3 col-lg-offset-3 btn btn-default read-responsive" data-title="' + title
+                + '" data-content="' + content + '">Read Blog</button><p>';
       html += '</div>';
       html += '</div>';
 
+      // Now add that html to the element so that its visable to the user
       $blogWrap.append(html);
     }
   }
 
-    //show lightbox when clicking image | copied from https://codepen.io/webcane/pen/bNEOXZ
+    // Show lightbox when clicking the Read more button, this .read-responsive class gets added to the
+    // button from the script.js file in the createBlogList function
+    // Copied from https://codepen.io/webcane/pen/bNEOXZ
     $('.read-responsive').click(function(event) {
-    	event.preventDefault();
+      // Dont refresh the page
+    	event.preventDefault
+
+      // Get holds on to all the elements in the html
     	var content = $('.modal-body');
-      //get the blog title
+      var modalTitle = $('.modal-title');
+
+      // Get the content associated with the image that was clicked
       var clickedBlogTitle = $(this).attr('data-title');
-      //get the content associated with the image that was clicked
       var clickedBlogContent = $(this).attr('data-content');
+
+      // Make sure their contents are cleared
     	content.empty();
+      modalTitle.empty();
+
       //now that we have the info for the specific blog, add it to the modal
-      $('.modal-title').html(clickedBlogTitle);
+      modalTitle.html(clickedBlogTitle);
       content.html(clickedBlogContent);
+
+      // Display the modal
       $(".modal-profile").modal({show:true});
     });
 

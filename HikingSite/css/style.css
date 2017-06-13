@@ -106,28 +106,14 @@ hr {
   color: red;
 }
 
-/*  Styling for the lightbox | manulpated code from : https://codepen.io/webcane/pen/bNEOXZ */
-#profile-grid { overflow: auto; white-space: normal; }
-#profile-grid .profile { padding-bottom: 0px; }
-#profile-grid .panel { padding: 0 }
-#profile-grid .panel-body { padding: 0px }
-#profile-grid .profile-name { font-weight: bold; }
-#profile-grid .thumbnail {margin-bottom:0px; }
-#profile-grid .panel-thumbnail { overflow: hidden; }
-#profile-grid .img-rounded { border-radius: 4px 4px 0 0; }
-
-/* on mobile they size of the image and modal-content must be made smaller */
+/*  Styling for the lightbox */
 .modal-content {
-    /*width: 300px;*/
     width: 100%;
     margin: 0 auto;
 }
 .lightbox-image {
   width: 270px;
 }
-/* end of styling for lightbox*/
-
-
 
 .contact-us {
 
