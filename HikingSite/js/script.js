@@ -193,4 +193,25 @@ $('a[href*="#"]')
     }
   });
 /*******************    End of scroll    *************************************/
+
+// ****************   Move menu to top-fixed if scrolled down  ***************/
+// apply a fixed menu bar for the desktop layout, if not desktop dont apply
+var topPosition = 0;
+var whenToChange = 100;
+var desktopSize = 768;
+var windowWidth = $(window).width();
+// When width indicates this device is a dektop, add scroll listener
+if (windowWidth >= desktopSize) {
+  $(window).on('scroll', function() {
+      var scrollFromTop = $(document).scrollTop() - topPosition;
+      // When scrolled over 100px from top fix nav, else don't fix it
+      if (scrollFromTop > whenToChange) {
+        $('#collapsemenu').addClass('navbar-fixed-top');
+        $('#collapsemenu').addClass('remove-margin');
+      } else { // scrolled less than 100px from top, don't fix nav
+        $('#collapsemenu').removeClass('navbar-fixed-top');
+        $('#collapsemenu').removeClass('remove-margin');
+      }
+  });
+}
 }

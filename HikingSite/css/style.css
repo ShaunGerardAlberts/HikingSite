@@ -37,6 +37,14 @@ header {
 .navbar-default .navbar-nav>li>a:hover  {
   color: #00da31;
 }
+/* when scrolling past a certain point nav bar get fixed */
+.navbar-fixed-top {
+    background-color:  black;
+    color: white;
+}
+.remove-margin {
+  margin-left: 0;
+}
 .banner-section {
 /*  background-image: url("../images/slider1.jpg");*/
   background-position: center center;
