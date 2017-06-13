@@ -130,7 +130,7 @@ function createBlogList(items) {
     // Iterate through every blog item we have recieved from the server
     for (blogCount; blogCount < items.length; blogCount++) {
 
-      // Once we have read 4 blog items stop, we only want to deal woth 4 at a time
+      // Once we have read 4 blog items stop, we only want to deal with 4 at a time
       if (i > limit) {
         break;
       }

@@ -23,10 +23,6 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-
-<!--    <link href="css/libs/jquery.bxslider.css" rel="stylesheet">
-    <script src="http://bxslider.com/lib/jquery.bxslider.js"></script><!-- for the bxslider -->
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"><!-- Download google font 'Open Sans' -->
     <title>Hiking Site</title>
   </head>
@@ -35,6 +31,7 @@
       <!-- top of page bookmark for scroll plugin -->
       <p id="top-bookmark"></p>
 
+      <!-- *******************  Header and Navigation section  **************** -->
       <header>
         <img src="images/trails-logo-v1.png" alt="trails-logo here" class="logo">
 
@@ -74,7 +71,7 @@
                 <li><a href="#" class="dropdown-toggle"
                     data-toggle="dropdown" role="button"
                     aria-haspopup="true"
-            emailResponseTag      aria-expanded="false">More
+                    emailResponseTag aria-expanded="false">More
                   </a>
                 </li>
               </ul>
@@ -83,6 +80,7 @@
 
       </header>
 
+      <!-- *******************  Slider Section  **************** -->
       <section class="banner-section">
         <ul class="bxslider">
           <li><img src="images/slider1.jpg" /></li>
@@ -92,6 +90,7 @@
 
       </section>
 
+      <!-- *******************  Blog Section  **************** -->
       <section class="blog-section">
         <p id="blog-scroll" class="bookmark-only"></p>
         <h3>Blog Section</h3>
@@ -104,6 +103,7 @@
         <p><a href="#top-bookmark">BACK TO TOP</a></p>
       </section>
 
+      <!-- *******************  Contact section  **************** -->
       <section class="contact-us">
         <p id="contact-scroll" class="bookmark-only"></p>
         <h3>Contact Form</h3>
@@ -134,7 +134,8 @@
           </div>
         </div>
 
-        <!--  Display the lightbox : only when image click, see script.js -->
+        <!-- *******************  Modal that gets dispayed when user click the 'read more' button  **************** -->
+        <!--  Display the modal : only when image click, see script.js -->
         <div class="modal fade modal-profile" tabindex="-1" role="dialog" aria-labelledby="modalProfile" aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -148,21 +149,21 @@
                 <button class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </div>
-        </div>
+          </div>
         </div>
 
         <p><a href="#top-bookmark">BACK TO TOP</a></p>
       </section>
 
-
+      <!-- ************************  Footer Section  ************************* -->
       <section class="footer-section">
 
       </section>
 
-    </div>
+      </div>
 
-  <script src="js/script.js?ver=1"></script>
+    <script src="js/script.js?ver=1"></script>
 
 
-  </body>
+    </body>
   </html>
