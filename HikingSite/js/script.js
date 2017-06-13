@@ -4,12 +4,37 @@
 /* Check your browsers console for messages */
 /* Use console.log() as many times as you need to */
 
+// ****************   Move menu to top-fixed if scrolled down  ***************/
+// apply a fixed menu bar for the desktop layout, if not desktop dont apply
+var topPosition = 0;
+var whenToChange = 100;
+var desktopSize = 768;
+var windowWidth = $(window).width();
+// When width indicates this device is a dektop, add scroll listener
+if (windowWidth >= desktopSize) {
+  $(window).on('scroll', function() {
+      var scrollFromTop = $(document).scrollTop() - topPosition;
+      // When scrolled over 100px from top fix nav, else don't fix it
+      if (scrollFromTop > whenToChange) {
+        $('#collapsemenu').addClass('navbar-fixed-top');
+        $('#collapsemenu').addClass('remove-margin');
+      } else { // scrolled less than 100px from top, don't fix nav
+        $('#collapsemenu').removeClass('navbar-fixed-top');
+        $('#collapsemenu').removeClass('remove-margin');
+      }
+  });
+}
+
 /*****************************  For the contact form submission ****************************************************************/
+// When the user click the contact form submission button, this is fired.
 $('#contact-submission').on('click', function () {
+  // Prevent the default action
   event.preventDefault();
   var userEmail = $('#exampleInputEmail').val();
+  // Test that the email is valid
   var isValidEmail = validateEmail(userEmail);
 
+  // If valid email, then send as ajax request to the server sending the email, then wait for a response
   if (isValidEmail) {
     $.ajax({
       method: "POST",
@@ -21,11 +46,13 @@ $('#contact-submission').on('click', function () {
         mail_to: "sga006@student.usc.edu.au",
       }
     }).done(function (jsonObject) {
+      // Send the respoonse to a function that will display the status of the request
       validateEmailSubmission(jsonObject)
     })
   }
 });
 
+// Test the json object to see if the email was delivered successfully
 function validateEmailSubmission(jsonObject) {
   if (jsonObject.success) {
     alert("Submission Successful")
@@ -35,29 +62,24 @@ function validateEmailSubmission(jsonObject) {
 }
 
 // This will check if the email is blank, invalid or valid
-// if invalid input border set to red and add a message added below the input
 function validateEmail(email) {
+  // no email text is entered
   if (email.length == 0) {
-    //$("#er").addClass(".emailResponseAdd");
-    $('#er').text('');
-    $("#er").text('** Email is blank');
+    $('#emailResponseTag').text('');
+    $("#emailResponseTag").text('** Email is blank');
     return false;
   } else { // not blank
     // copied this regex from : http://www.jquerybyexample.net/2011/04/validate-email-address-using-jquery.html
     var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     if (filter.test(email)) {
-      console.log("Remove Class - validEmail");
-      $('#er').text('');
-      $('#er').text('**Email is required');
+      $('#emailResponseTag').text('');
+      $('#emailResponseTag').text('**Email is required');
       //$("#er").removeClass(".emailResponseAdd");
       return true;
-    }
-    else {
-      // Not valid email, inform user
-      //$("#er").addClass(".emailResponseAdd");
-      $('#er').text('');
-      $("#er").text('** Invalid email entry');
-      return false;
+    } else {
+        $('#emailResponseTag').text('');
+        $("#emailResponseTag").text('** Invalid email entry');
+        return false;
     }
   }
 }
@@ -193,25 +215,4 @@ $('a[href*="#"]')
     }
   });
 /*******************    End of scroll    *************************************/
-
-// ****************   Move menu to top-fixed if scrolled down  ***************/
-// apply a fixed menu bar for the desktop layout, if not desktop dont apply
-var topPosition = 0;
-var whenToChange = 100;
-var desktopSize = 768;
-var windowWidth = $(window).width();
-// When width indicates this device is a dektop, add scroll listener
-if (windowWidth >= desktopSize) {
-  $(window).on('scroll', function() {
-      var scrollFromTop = $(document).scrollTop() - topPosition;
-      // When scrolled over 100px from top fix nav, else don't fix it
-      if (scrollFromTop > whenToChange) {
-        $('#collapsemenu').addClass('navbar-fixed-top');
-        $('#collapsemenu').addClass('remove-margin');
-      } else { // scrolled less than 100px from top, don't fix nav
-        $('#collapsemenu').removeClass('navbar-fixed-top');
-        $('#collapsemenu').removeClass('remove-margin');
-      }
-  });
-}
 }
