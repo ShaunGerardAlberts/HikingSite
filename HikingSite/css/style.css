@@ -119,6 +119,9 @@ hr {
   background-color: #020102;
 }
 
+.footer-section img {
+  margin-top: 20px;
+}
 
 /************************* Media Queries  *******************************/
 /*  media queries, bootstrap is mobile first, so global styling set for mobile. Overrite them moving outwards(wider)   */
@@ -131,7 +134,9 @@ hr {
   }
 }
 @media(min-width: 375px) {
-
+  .footer-section img {
+      margin-top: 14px;
+  }
 }
 @media(min-width: 425px) {
   .blog-item {
@@ -148,6 +153,9 @@ hr {
   /* turn off the width: 100%*/
   .btn-primary {
     width: auto;
+  }
+  .footer-section img {
+    margin-top: 13px;
   }
 }
 @media(min-width: 1024px) {
