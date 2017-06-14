@@ -10,20 +10,26 @@ var topPosition = 0;
 var whenToChange = 100;
 var desktopSize = 768;
 var windowWidth = $(window).width();
-// When width indicates this device is a dektop, add scroll listener
-if (windowWidth >= desktopSize) {
-  $(window).on('scroll', function() {
-      var scrollFromTop = $(document).scrollTop() - topPosition;
-      // When scrolled over 100px from top fix nav, else don't fix it
-      if (scrollFromTop > whenToChange) {
-        $('#collapsemenu').addClass('navbar-fixed-top');
-        $('#collapsemenu').addClass('remove-margin');
-      } else { // scrolled less than 100px from top, don't fix nav
-        $('#collapsemenu').removeClass('navbar-fixed-top');
-        $('#collapsemenu').removeClass('remove-margin');
-      }
-  });
-}
+// Add a scroll listener
+$(window).on('scroll', function() {
+  // Get the width of the window
+  windowWidth = $(window).width();
+  // If the window is 768 or greater we need to apply the fixed navigation, if not remove it
+  if (windowWidth >= desktopSize) {
+    var scrollFromTop = $(document).scrollTop() - topPosition;
+    // When scrolled over 100px from top apply fix nav, else don't fix it
+    if (scrollFromTop > whenToChange) {
+      $('#collapsemenu').addClass('navbar-fixed-top');
+      $('#collapsemenu').addClass('remove-margin');
+    } else { // scrolled less than 100px from top, don't fix nav
+      $('#collapsemenu').removeClass('navbar-fixed-top');
+      $('#collapsemenu').removeClass('remove-margin');
+    }
+  } else {
+    $('#collapsemenu').removeClass('navbar-fixed-top');
+    $('#collapsemenu').removeClass('remove-margin');
+  }
+});
 
 /*****************************  For the contact form submission ****************************************************************/
 // When the user click the contact form submission button, this is fired.
@@ -213,15 +219,25 @@ $('a[href*="#"]')
       // Figure out element to scroll to
       var target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+
       // The fixed header has changed where the scroll needs to go to.  Do this to make scroller not scroll so far
-      var changedTarget =  target.offset().top - 120;
+      var changedTarget;
+      // But if the nav is collapsed it doesnt get fixed so we need to ensure this correction doesnt apply when the nav is collapsed
+      var currentWindowWidth = $(window).width();
+      if (currentWindowWidth < 768) {
+        //console.log("Collapsed Window")
+        changedTarget =  target.offset().top;
+      } else {
+        //console.log("Not collapsed");
+        changedTarget =  target.offset().top - 120;
+      }
 
       // Does a scroll target exist?
       if (target.length) {
         // Only prevent default if animation is actually gonna happen
         event.preventDefault();
         $('html, body').animate({
-          scrollTop: changedTarget// was target.offset().top but changed this due the the fixed heade affacting things
+          scrollTop: changedTarget//target.offset().top// was target.offset().top but changed this due the the fixed heade affacting things
         }, 2000, function() {
           // Callback after animation
           // Must change focus!
