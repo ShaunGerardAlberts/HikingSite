@@ -25,7 +25,7 @@ $(window).on('scroll', function() {
       $('#collapsemenu').removeClass('navbar-fixed-top');
       $('#collapsemenu').removeClass('remove-margin');
     }
-  } else {
+  } else {// Nav is collapsed remove fixed nav if applied
     $('#collapsemenu').removeClass('navbar-fixed-top');
     $('#collapsemenu').removeClass('remove-margin');
   }
