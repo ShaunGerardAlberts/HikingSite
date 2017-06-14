@@ -202,6 +202,8 @@ $('a[href*="#"]')
   .not('[href="#"]')
   .not('[href="#0"]')
   .click(function(event) {
+     var headerHeight = $(".get-height").height();
+     console.log("Header height : " + headerHeight);
     // On-page links
     if (
       location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
@@ -211,13 +213,16 @@ $('a[href*="#"]')
       // Figure out element to scroll to
       var target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // The fixed header has changed where the scroll needs to go to.  Do this to make scroller not scroll so far
+      var changedTarget =  target.offset().top - 120;
+
       // Does a scroll target exist?
       if (target.length) {
         // Only prevent default if animation is actually gonna happen
         event.preventDefault();
         $('html, body').animate({
-          scrollTop: target.offset().top
-        }, 1000, function() {
+          scrollTop: changedTarget// was target.offset().top but changed this due the the fixed heade affacting things
+        }, 2000, function() {
           // Callback after animation
           // Must change focus!
           var $target = $(target);
