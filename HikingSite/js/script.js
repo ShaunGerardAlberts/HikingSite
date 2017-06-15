@@ -32,7 +32,7 @@ $(window).on('scroll', function() {
 });
 
 /*****************************  For the contact form submission ****************************************************************/
-// When the user click the contact form submission button, this is fired.
+// When the user clicks the contact form submission button, this is fired.
 $('#contact-submission').on('click', function () {
   // Prevent the default action
   event.preventDefault();
@@ -89,8 +89,9 @@ function validateEmail(email) {
     }
   }
 }
-/*********************************************************************************************/
+/************************    End of contact form    ************************************/
 
+/* ****************************  For the blog section **********************************/
 /* Set global variables */
 var blogCount = 0;
 var limit = 4;
@@ -172,8 +173,10 @@ function createBlogList(items) {
       $blogWrap.append(html);
     }
   }
+/* **********************************  En of blog section *****************************/
 
-    // Show lightbox when clicking the Read more button, this .read-responsive class gets added to the
+/* **********************************   For the Modal **********************************/
+    // Show modal when clicking the Read more button, this .read-responsive class gets added to the
     // button from the script.js file in the createBlogList function
     // Copied from https://codepen.io/webcane/pen/bNEOXZ
     $('.read-responsive').click(function(event) {
@@ -200,8 +203,8 @@ function createBlogList(items) {
       $(".modal-profile").modal({show:true});
     });
 
-/****************************************    Scroll plugin  ****************/
-// Plugin from : https://codepen.io/chriscoyier/pen/dpBMVP
+/****************************************    Scroll plugin  ********************/
+// Plugin from : https://codepen.io/chriscoyier/pen/dpBMVP, But adjusted for the fixed nav
 // Select all links with hashes
 $('a[href*="#"]')
   // Remove links that don't actually link to anything

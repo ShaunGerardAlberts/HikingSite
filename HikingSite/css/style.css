@@ -1,6 +1,9 @@
 html {
   width: 100%;
 }
+p, h1, h2, h3, a, form, div {
+  font-family: 'Lora', serif;
+}
 #page {
   position: relative;
   min-width: 320px;
@@ -31,7 +34,10 @@ header {
   color: #fff;
 }
 .navbar-default .navbar-nav>li>a:hover  {
-  color: #00da31;
+  /*color: #00da31;*/
+  text-decoration: underline;
+  color: #fff;
+
 }
 /* when scrolling past a certain point nav bar get fixed */
 .navbar-fixed-top {
